@@ -1,11 +1,7 @@
-from flask import Flask
 import os
 import requests
 # import pprint
 
-app = Flask(__name__)
-
-@app.route('/')
 def get_info(word:str):
     url = f"https://api.dictionaryapi.dev/api/v2/entries/en/{word}"
     response = requests.get(url)
@@ -56,8 +52,3 @@ def parse(data):
     # print(message)
     return message 
 
-get_info('like')
-
-if __name__ == "__main__":
-    port = int(os.environ.get('PORT', 5050))
-    app.run(debug=True, host = '0.0.0.0', port = port)
